@@ -1,25 +1,30 @@
 
-import {userUrl, userProfilesUrl, fetchData} from "./axiosService.js"
+import {userUrl, userProfilesUrl, fetchData} from './axiosService.js'
+import { send } from './mailerService.js';
+import bodyParser from 'body-parser';
 import express from 'express';
 import morgan from 'morgan';
-import bodyParser from "body-parser";
-import { send } from "./mailerService.js";
+import cors from 'cors';
 
 const app = express();
 
 app.use(bodyParser());
 app.use(morgan());
-app.use(express.static('public'));
+app.use(cors())
+app.use(express.static('dist'));
 
 
-let lettersToSanta = [];
-
-app.get('/', (request, response) => {
-  response.sendFile(__dirname + '/view/index.html');
-});
+// Letters to santa are stored here
+let lettersToSanta = [
+  // {
+  //   username: "charlie.brown",
+  //   address: "Tokyo, Japan",
+  //   wish: "Gifts!"
+  // }
+];
 
 // Main API Endpoint for sending request to santa
-app.post('/send', async (request, response) => {
+app.post('/api/v1/send', async (request, response) => {
 
   // Get appropriate data
   const userData = await fetchData(userUrl);
@@ -44,19 +49,23 @@ app.post('/send', async (request, response) => {
   );
 
   // Return success message
-  return response.send({message:"Letter has been sent to Santa."});
+  return response.send({message:"Your letter has been sent to Santa!"});
 });
 
 
 // Sends the accumulated email to Santa every 15 seconds
 setInterval(()=> {
+
+  // Only trigger send function when letter box is not empty
   if (lettersToSanta.length > 0) {
-      lettersToSanta.forEach(obj => send(obj));
-      lettersToSanta = [];
+
+      lettersToSanta.forEach(obj => send(obj)); // Send All of the Letters
+
+      lettersToSanta = []; // Empty the letter box so we can fill it up again
   }
-}, 15000);
+}, 15000); // 15 seconds
 
-
+// Listens to the default port or to 8080
 const listener = app.listen(process.env.PORT || 8080, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });

@@ -1,15 +1,32 @@
 import { useState } from "react"
+import axios from "axios";
 
 function App() {
-
     const[name, setName] = useState("");
     const[gifts, setGifts] = useState("");
 
-    function submitForm(e) {
-         e.preventDefault();
-         console.log(`${name}  ${gifts}`);
+    const axiosConfig = {
+      headers: {
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
     }
 
+    // Submit form to the server
+    function submitForm(e) {
+         e.preventDefault();
+
+         const body = {
+            name: name,
+            wish: gifts
+         }
+
+         axios.post('http://localhost:8080/api/v1/send', body, axiosConfig)
+         .then(resp => alert(resp.data.message))
+         .catch(err => alert(err.response.data.message));
+    }
+
+    // Render the letter web page
     return <div>
 
     <header>
@@ -43,7 +60,7 @@ function App() {
 
         <br />
 
-        <button type="submit" id="submit-letter">Send</button>
+        <button type="submit" id="submit-letter" disabled={name === "" || gifts === ""}>Send</button>
 
       </form>
     </main>
