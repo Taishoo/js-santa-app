@@ -1,7 +1,8 @@
+import React from "react";
 import { useState } from "react"
 import axios from "axios";
 
-function App() {
+const App = () => {
     const[name, setName] = useState("");
     const[gifts, setGifts] = useState("");
 
@@ -42,6 +43,7 @@ function App() {
       <input 
       name="userid" 
       placeholder="charlie.brown"
+      data-testid="input"
       value={name} 
       onChange={e => setName(e.target.value)}
       />
@@ -53,6 +55,7 @@ function App() {
         <textarea 
         name="wish" rows="10" 
         cols="45" maxLength="100" 
+        data-testid="text-area"
         placeholder="Gifts!"
         value={gifts} 
         onChange={e => setGifts(e.target.value)}
@@ -60,7 +63,11 @@ function App() {
 
         <br />
 
-        <button type="submit" id="submit-letter" disabled={name === "" || gifts === ""}>Send</button>
+        <button 
+        type="submit" id="submit-letter"
+        data-testid="submit-letter"
+         disabled={name === "" || gifts === ""}>
+          Send</button>
 
       </form>
     </main>
