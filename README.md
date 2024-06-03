@@ -1,67 +1,54 @@
-# IMPORTANT! READ before starting
+# JavaScript Santa App #
+Node Express + React Coding Challenge<br/>
+by Albert V. De Leon Jr.
 
-By default for anonymous users (non logged in), your code and app will only remain on glitch.com for 5 days.
-In order to not lose your challenge, please create a glitch.com account and log in to glitch.com before proceeding.
+## Contents ##
+    1. Starting up
+    2. Ethereal Email Credentials
+    3. Working with React-Vite UIs
+    4. Creating React static for Express Server
+    5. Enhancement Updates
+    6. Library Updates
 
-The following README contains instructions to guide you through the coding challenge, please read them carefully.
+## 1. Starting Up ##
+1. Clone Repository
+2. Install Dependencies `npm install`
+3. Start App *(ReactJS + ExpressJS)* in localhost 8080 `npm start`
 
-# JS coding challenge:
+## 2. Ethereal Email Credentials ##
+    user: audie.willms@ethereal.email
+    pass: TGrCg11NSrD15CVD9c
 
-## How to create and submit your app using glitch
+## 3. Working with React-Vite UIs ##
+1. To run Standalone React in your device run `npm run start:vite` this will run in port 3000
+2. If you want your React App to connect to server run `npm run start` to start 
+3. Start Coding!
 
-1. **Login to glitch**: make sure you are logged in to glitch.com
+## 4. Creating/Updating React static for Express Server ##
+1. It's a best practice to run unit tests before creating a build `npm run test`
+2. To Update/Create a new static React App for your Server run `npm run build`
+3. To see your server static web to be updated run `npm start`
 
-2. **Clone**: Go to this URL: https://glitch.com/~js-santa-app and click the `Remix your own` button to clone the code. This will copy all the code to a new, randomly generated URL (e.g. https://glitch.com/edit/#!/capable-toothpaste). This is your URL to code on, no other candidates will have this URL.
+## 5. Enhancement Updates ##
 
-3. **Code**: You can edit the code directly in the Glitch editor or use your editor of choice (VSCode, Sublime, etc) and copy paste the files into Glitch. Git import and export is also available in the Tools menu on the bottom left. How you edit the code is entirely up to you, so long as your finished work is viewable at the URL created in the previous step.
+- Bug Fixes to work according to required objectives
+- Replaced the static Santa Html file with ReactJs
+- Uses NodeJs + ExpressJs for Server
+- Created Server and Front End Test units
+- Added Working NodeMailer
+- Code Refactor
 
-> **NOTE**: Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+## 6. Library Updates ##
 
-4. **Turn in**: When you finish coding, send your URL to us so we can review your code.
+###Added:
+- **axios:** Replacement for the old Request library
+- **cors:** Allow CORS access
 
-## Objectives overview:
+###Added Dev:
+- **nodemon:** For hot reloading of server
+- **@testing-library:** Testing Libraries for React
+- **supertest:** Library for testing HTTP Requests
+- **vitest:** Vite Testing Framework
+- **jsdom:** Useful for testing and scraping
 
-The webapp should display a form for children to enter their id and a free text message to santa.
-
-When submitting the form, the server should check:
-
-1.  that the child is registered
-2.  that the child is less than 10 years old.
-    To this purpose, the server can fetch user and profiles data in JSON format from:
-
-- https://raw.githubusercontent.com/alj-devops/santa-data/master/userProfiles.json
-- https://raw.githubusercontent.com/alj-devops/santa-data/master/users.json
-
-If the child is not registered (no match for the user id) or more than 10years old, the webapp should display a basic error page with an error message explaining the problem.\
-If the child is registered and less than 10 years old, the server should show a page indicating that the request has been received.
-
-Every 15seconds, the server should send an email with information on all pending (not yet sent) requests including:
-
-- child username (eg. charlie.brown)
-- child's address (eg. 219-1130, Ikanikeisaiganaibaai, Musashino-shi, Tokyo)
-- request free text as was input in the form
-
-Email sender should be set as do_not_reply@northpole.com, and sent to santa@northpole.com
-
-## Tips and detailed instructions:
-
-- Somebody started to work on the app, but left it unfinished and did not use any modern technology. We added React for you to have a clean base but feel free to use any other technology you might prefer.
-- The UI and UX of the application for this challenge is not the priority. The pages/email do not need to look good, as long as they convey the information effectively.
-- You should fetch the JSON data at every form submission (consider it as an API).
-- For the sake of the challenge, you can keep the requests in-memory only.
-- You are encouraged to select and use npm packages as needed (you can add packages by editing package.json, or using `npm install` from the glitch console).
-- To get an smtp server for emails, go to https://ethereal.email/ and click "Create Ethereal Account".\
-  This will give you an account (take note of your username and pwd if you need to re-logon later) and smtp server (actual emails do not get delivered).\
-  Go to https://ethereal.email/messages to see the emails that have been received by the smtp server.
-
-## Some things we will look for in your submission
-
-- Code quality (readability, use of modern syntax...)
-- Does the app work as designed (cf. objectives overview)
-- App architecture (folder structure, configuration management...)
-- Documentation (why did you choose to change or add a package...)
-
-## Tips on usage of glitch
-
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
-When your app is running, you can access logs and console using the "Tools" button at the bottom left.
+何卒宜しくお願い致します。
